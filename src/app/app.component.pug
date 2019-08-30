@@ -1,0 +1,11 @@
+.container
+  .row
+    .col.py-3
+      p Playing:
+        span([style.color]='moving ? "green" : "red"') {{ moving ? 'Moving': 'Stopped' }}
+      .row
+        .col-12.my-5
+          table(*ngFor='let side of ground; let s = index', [id]='s + 1 + "side"')
+            tbody
+              tr(*ngFor='let row of side; let j = index')
+                td.pos(*ngFor='let pos of row', [id]="s + 1 + pos", (click)="pickFromPos(s, $event)") {{ s == 0 && j == 0 ? '0' : ( s == 0 && j == 1 ? '4' : ( s == 1 && j == 0 ? '4' : '0' ) ) }}

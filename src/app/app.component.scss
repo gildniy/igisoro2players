@@ -1,0 +1,66 @@
+// Default font
+//@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=BioRhyme:400');
+
+// https://jsonformatter.org/scss-to-css
+$ball-class: ball !default;
+$min-number: 0 !default;
+$max-number: 64 !default;
+$current-pos-border-color: green !default;
+$picking-pos-border-color: red !default;
+
+// GROUND BACKGROUND
+// http://www.tagindex.net/css/table/background_image.html
+// https://www.lifewire.com/set-image-as-table-background-3469870
+
+@for $i from $min-number to $max-number {
+
+  $prefix: '';
+
+  @if $i > 1 {
+    $prefix: 's'
+  }
+
+  .#{$ball-class}#{$prefix}-#{$i} {
+    background: url('../assets/pos-#{$ball-class}/#{$i}.svg') center no-repeat;
+  }
+}
+
+* {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+}
+
+.pos {
+  font-family: 'BioRhyme', serif;
+  border: 5px solid #bf911d;
+  color: #ffffff;
+  &.current {
+    color: $current-pos-border-color;
+    border: 5px solid $current-pos-border-color;
+  }
+}
+
+.picking-from-opp {
+  color: $picking-pos-border-color;
+  border: 5px solid $picking-pos-border-color;
+}
+
+table {
+  width: 80%;
+  padding: 10px;
+  background: #bf911d;
+  border: 5px solid goldenrod;
+  border-spacing: 10px;
+  border-collapse: separate;
+  border-radius: 90px;
+
+  td {
+    width: 125px !important;
+    height: 125px!important;
+    line-height: 125px!important;
+    border-radius: 50%;
+    text-align: center;
+  }
+}
